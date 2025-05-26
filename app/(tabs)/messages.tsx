@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Search as SearchIcon } from 'lucide-react-native';
 import SearchBar from '@/components/SearchBar';
 import MessagePreview from '@/components/MessagePreview';
 
@@ -43,28 +42,6 @@ export default function MessagesScreen() {
       timestamp: 'Yesterday',
       unread: 1,
     },
-    {
-      id: '4',
-      user: {
-        name: 'Michael Brown',
-        avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-        skill: 'Photography Basics',
-      },
-      lastMessage: "I really liked the photos you took during our last lesson. You're making great progress!",
-      timestamp: 'Monday',
-      unread: 0,
-    },
-    {
-      id: '5',
-      user: {
-        name: 'Sophie Martin',
-        avatar: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg',
-        skill: 'French Conversation',
-      },
-      lastMessage: "Bonjour! Let me know when you want to schedule our next conversation practice.",
-      timestamp: 'Sunday',
-      unread: 0,
-    },
   ];
 
   const renderTabButton = (title, tabName) => (
@@ -105,7 +82,7 @@ export default function MessagesScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFD93D',
   },
   header: {
     paddingHorizontal: 16,
@@ -124,7 +101,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginBottom: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#EFEFEF',
+    borderBottomColor: 'rgba(0, 0, 0, 0.1)',
     paddingBottom: 8,
   },
   tabButton: {
@@ -134,15 +111,15 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   activeTabButton: {
-    backgroundColor: '#E9F0F9',
+    backgroundColor: '#000000',
   },
   tabButtonText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#6E6E73',
+    color: '#000000',
   },
   activeTabButtonText: {
-    color: '#0066CC',
+    color: '#FFFFFF',
   },
   listContainer: {
     paddingBottom: 24,

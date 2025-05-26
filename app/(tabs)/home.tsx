@@ -42,46 +42,20 @@ export default function HomeScreen() {
     },
   ];
 
-  // Mock data for nearby skills
-  const nearbySkills = [
-    {
-      id: '4',
-      title: 'Photography Basics',
-      category: 'Arts',
-      rating: 4.6,
-      reviewCount: 78,
-      tutor: 'Michael Brown',
-      imageUrl: 'https://images.pexels.com/photos/1261731/pexels-photo-1261731.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-    },
-    {
-      id: '5',
-      title: 'French Conversation',
-      category: 'Languages',
-      rating: 4.9,
-      reviewCount: 112,
-      tutor: 'Sophie Martin',
-      imageUrl: 'https://images.pexels.com/photos/5211479/pexels-photo-5211479.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg',
-    },
-    {
-      id: '6',
-      title: 'Guitar for Beginners',
-      category: 'Music',
-      rating: 4.5,
-      reviewCount: 67,
-      tutor: 'David Wilson',
-      imageUrl: 'https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg',
-      tutorImageUrl: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg',
-    },
-  ];
-
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.header}>
-          <Text style={styles.greeting}>Hello, Alex</Text>
-          <Text style={styles.subGreeting}>What would you like to learn today?</Text>
+          <View style={styles.logoContainer}>
+            <Image 
+              source={{ uri: 'https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg' }}
+              style={styles.logo} 
+            />
+            <View>
+              <Text style={styles.greeting}>Hello, Alex</Text>
+              <Text style={styles.subGreeting}>What would you like to learn today?</Text>
+            </View>
+          </View>
         </View>
 
         <View style={styles.searchContainer}>
@@ -118,24 +92,6 @@ export default function HomeScreen() {
             <SkillCard key={skill.id} skill={skill} />
           ))}
         </ScrollView>
-
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Nearby Skills</Text>
-          <TouchableOpacity style={styles.seeAllButton}>
-            <Text style={styles.seeAllText}>See All</Text>
-            <ChevronRight size={16} color="#0066CC" />
-          </TouchableOpacity>
-        </View>
-
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.skillsScrollContent}
-        >
-          {nearbySkills.map(skill => (
-            <SkillCard key={skill.id} skill={skill} />
-          ))}
-        </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
@@ -144,7 +100,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#4ECDC4',
   },
   scrollContent: {
     paddingBottom: 24,
@@ -154,16 +110,27 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 8,
   },
+  logoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  logo: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    marginRight: 12,
+  },
   greeting: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#000000',
+    color: '#FFFFFF',
     marginBottom: 4,
   },
   subGreeting: {
     fontSize: 16,
-    color: '#6E6E73',
-    marginBottom: 16,
+    color: '#FFFFFF',
+    opacity: 0.8,
   },
   searchContainer: {
     flexDirection: 'row',
@@ -174,7 +141,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EFEFF4',
+    backgroundColor: '#FFFFFF',
     borderRadius: 10,
     paddingHorizontal: 12,
     marginRight: 12,
@@ -191,7 +158,7 @@ const styles = StyleSheet.create({
   filterButton: {
     width: 40,
     height: 40,
-    backgroundColor: '#E9F0F9',
+    backgroundColor: '#FFFFFF',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -207,7 +174,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000000',
+    color: '#FFFFFF',
   },
   seeAllButton: {
     flexDirection: 'row',
@@ -215,7 +182,7 @@ const styles = StyleSheet.create({
   },
   seeAllText: {
     fontSize: 14,
-    color: '#0066CC',
+    color: '#FFFFFF',
     marginRight: 4,
   },
   skillsScrollContent: {

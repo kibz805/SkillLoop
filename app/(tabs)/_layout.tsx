@@ -2,6 +2,14 @@ import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { Chrome as Home, Users, MessageCircle, Calendar, User } from 'lucide-react-native';
 
+const TAB_COLORS = {
+  home: '#4ECDC4',      // Teal
+  explore: '#FF6B6B',   // Coral
+  messages: '#FFD93D',  // Yellow
+  calendar: '#95D5B2',  // Sage
+  profile: '#6C63FF'    // Purple
+};
+
 export default function TabLayout() {
   return (
     <Tabs

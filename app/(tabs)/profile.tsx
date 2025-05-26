@@ -37,7 +37,7 @@ export default function ProfileScreen() {
           <View style={styles.headerTop}>
             <Text style={styles.title}>Profile</Text>
             <TouchableOpacity style={styles.settingsButton}>
-              <Settings size={24} color="#000000" />
+              <Settings size={24} color="#FFFFFF" />
             </TouchableOpacity>
           </View>
         </View>
@@ -53,7 +53,7 @@ export default function ProfileScreen() {
             <Text style={styles.location}>{user.location}</Text>
           </View>
           <TouchableOpacity style={styles.editButton}>
-            <Edit2 size={16} color="#0066CC" />
+            <Edit2 size={16} color="#FFFFFF" />
           </TouchableOpacity>
         </View>
 
@@ -64,9 +64,9 @@ export default function ProfileScreen() {
         <View style={styles.badgesContainer}>
           {user.badges.map(badge => (
             <View key={badge.id} style={styles.badgeItem}>
-              {badge.icon === 'award' && <Award size={16} color="#0066CC" />}
-              {badge.icon === 'shield' && <Shield size={16} color="#0066CC" />}
-              {badge.icon === 'message-circle' && <MessageCircle size={16} color="#0066CC" />}
+              {badge.icon === 'award' && <Award size={16} color="#FFFFFF" />}
+              {badge.icon === 'shield' && <Shield size={16} color="#FFFFFF" />}
+              {badge.icon === 'message-circle' && <MessageCircle size={16} color="#FFFFFF" />}
               <Text style={styles.badgeText}>{badge.name}</Text>
             </View>
           ))}
@@ -102,17 +102,17 @@ export default function ProfileScreen() {
 
         <View style={styles.buttonSection}>
           <ProfileButton
-            icon={<BookOpen size={20} color="#0066CC" />}
+            icon={<BookOpen size={20} color="#FFFFFF" />}
             title="My Learning Journey"
             subtitle="Track your progress"
           />
           <ProfileButton
-            icon={<MessageCircle size={20} color="#0066CC" />}
+            icon={<MessageCircle size={20} color="#FFFFFF" />}
             title="Reviews & Testimonials"
             subtitle="See what others are saying"
           />
           <ProfileButton
-            icon={<Shield size={20} color="#0066CC" />}
+            icon={<Shield size={20} color="#FFFFFF" />}
             title="Verification"
             subtitle="Verify your skills & identity"
           />
@@ -125,7 +125,7 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#6C63FF',
   },
   scrollContent: {
     paddingBottom: 24,
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#000000',
+    color: '#FFFFFF',
   },
   settingsButton: {
     padding: 8,
@@ -153,20 +153,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
     marginTop: 8,
     borderRadius: 12,
     marginHorizontal: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3.84,
-    elevation: 3,
   },
   avatar: {
     width: 80,
     height: 80,
     borderRadius: 40,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
   },
   profileInfo: {
     marginLeft: 16,
@@ -175,7 +172,7 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#000000',
+    color: '#FFFFFF',
     marginBottom: 4,
   },
   ratingContainer: {
@@ -185,31 +182,27 @@ const styles = StyleSheet.create({
   },
   rating: {
     fontSize: 14,
-    color: '#6E6E73',
+    color: '#FFFFFF',
     marginLeft: 4,
   },
   location: {
     fontSize: 14,
-    color: '#6E6E73',
+    color: '#FFFFFF',
+    opacity: 0.8,
   },
   editButton: {
     padding: 8,
   },
   bioContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
     marginHorizontal: 16,
     padding: 16,
     borderRadius: 12,
     marginTop: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3.84,
-    elevation: 3,
   },
   bio: {
     fontSize: 16,
-    color: '#6E6E73',
+    color: '#FFFFFF',
     lineHeight: 22,
   },
   badgesContainer: {
@@ -221,7 +214,7 @@ const styles = StyleSheet.create({
   badgeItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E9F0F9',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 16,
@@ -230,21 +223,16 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     fontSize: 14,
-    color: '#0066CC',
+    color: '#FFFFFF',
     marginLeft: 4,
     fontWeight: '500',
   },
   section: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
     marginHorizontal: 16,
     padding: 16,
     borderRadius: 12,
     marginTop: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3.84,
-    elevation: 3,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -255,12 +243,13 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#000000',
+    color: '#FFFFFF',
   },
   sectionAction: {
     fontSize: 14,
-    color: '#0066CC',
+    color: '#FFFFFF',
     fontWeight: '500',
+    opacity: 0.8,
   },
   skillsContainer: {
     flexDirection: 'row',

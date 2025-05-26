@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronLeft, ChevronRight } from 'lucide-react-native';
 import CalendarStrip from '@/components/CalendarStrip';
 import SessionCard from '@/components/SessionCard';
 
@@ -31,28 +30,6 @@ export default function CalendarScreen() {
       startTime: '2:00 PM',
       endTime: '3:30 PM',
       location: 'Online (Google Meet)',
-      status: 'confirmed',
-    },
-    {
-      id: '3',
-      title: 'Yoga for Beginners',
-      tutor: 'Emma Wilson',
-      tutorAvatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
-      date: new Date(Date.now() + 172800000), // Day after tomorrow
-      startTime: '9:00 AM',
-      endTime: '10:00 AM',
-      location: 'Central Park',
-      status: 'pending',
-    },
-    {
-      id: '4',
-      title: 'Photography Basics',
-      tutor: 'Michael Brown',
-      tutorAvatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg',
-      date: new Date(Date.now() + 259200000), // 3 days from now
-      startTime: '3:00 PM',
-      endTime: '5:00 PM',
-      location: 'City Museum',
       status: 'confirmed',
     },
   ];
@@ -112,7 +89,7 @@ export default function CalendarScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#95D5B2',
   },
   header: {
     paddingHorizontal: 16,
@@ -136,18 +113,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 20,
     marginRight: 8,
-    backgroundColor: '#F2F2F7',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
   activeTabButton: {
-    backgroundColor: '#0066CC',
+    backgroundColor: '#FFFFFF',
   },
   tabButtonText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#6E6E73',
+    color: '#000000',
   },
   activeTabButtonText: {
-    color: '#FFFFFF',
+    color: '#000000',
   },
   listContainer: {
     paddingHorizontal: 16,
@@ -160,6 +137,7 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 16,
-    color: '#8E8E93',
+    color: '#000000',
+    opacity: 0.7,
   },
 });

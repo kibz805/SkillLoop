@@ -40,26 +40,6 @@ export default function ExploreScreen() {
       imageUrl: 'https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg',
       tutorImageUrl: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg',
     },
-    {
-      id: '4',
-      title: 'Mobile App Development',
-      category: 'Technology',
-      tutor: 'Alex Chen',
-      distance: '2.0 miles',
-      rating: 4.9,
-      imageUrl: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg',
-    },
-    {
-      id: '5',
-      title: 'Yoga for Flexibility',
-      category: 'Fitness',
-      tutor: 'Sarah Parker',
-      distance: '0.5 miles',
-      rating: 4.8,
-      imageUrl: 'https://images.pexels.com/photos/374101/pexels-photo-374101.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg',
-    },
   ];
 
   const renderTabButton = (title, tabName) => (
@@ -87,7 +67,7 @@ export default function ExploreScreen() {
       </View>
       
       <View style={styles.locationContainer}>
-        <MapPin size={16} color="#6E6E73" />
+        <MapPin size={16} color="#FFFFFF" />
         <Text style={styles.locationText}>San Francisco, CA</Text>
         <TouchableOpacity>
           <Text style={styles.changeLocationText}>Change</Text>
@@ -108,7 +88,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#FF6B6B',
   },
   header: {
     paddingHorizontal: 16,
@@ -118,7 +98,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#000000',
+    color: '#FFFFFF',
     marginBottom: 16,
   },
   tabContainer: {
@@ -132,18 +112,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     borderRadius: 20,
     marginRight: 8,
-    backgroundColor: '#F2F2F7',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
   },
   activeTabButton: {
-    backgroundColor: '#0066CC',
+    backgroundColor: '#FFFFFF',
   },
   tabButtonText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#6E6E73',
+    color: '#FFFFFF',
   },
   activeTabButtonText: {
-    color: '#FFFFFF',
+    color: '#FF6B6B',
   },
   locationContainer: {
     flexDirection: 'row',
@@ -153,14 +133,15 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: 14,
-    color: '#6E6E73',
+    color: '#FFFFFF',
     marginLeft: 4,
     marginRight: 8,
   },
   changeLocationText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#0066CC',
+    color: '#FFFFFF',
+    textDecorationLine: 'underline',
   },
   listContainer: {
     paddingHorizontal: 16,
