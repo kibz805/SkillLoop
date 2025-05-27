@@ -1,97 +1,109 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, TextInput } from 'react-native';
-import { Search, Filter, ChevronRight } from 'lucide-react-native';
+import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SkillCard from '@/components/SkillCard';
-import CategoryList from '@/components/CategoryList';
+import { Link } from 'expo-router';
+import { Search, Bell, TrendingUp, Clock, BookOpen } from 'lucide-react-native';
+import SearchBar from '@/components/SearchBar';
+import FeaturedCourse from '@/components/FeaturedCourse';
+import ActivityCard from '@/components/ActivityCard';
 
 export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Mock data for featured skills
-  const featuredSkills = [
+  const featuredCourses = [
     {
       id: '1',
-      title: 'Piano Lessons',
-      category: 'Music',
+      title: 'Advanced Web Development',
+      instructor: 'Sarah Johnson',
+      duration: '8 hours',
       rating: 4.8,
-      reviewCount: 124,
-      tutor: 'Sarah Johnson',
-      imageUrl: 'https://images.pexels.com/photos/1246437/pexels-photo-1246437.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg',
+      image: 'https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg',
+      price: 49.99,
     },
     {
       id: '2',
-      title: 'Web Development',
-      category: 'Technology',
+      title: 'Digital Marketing Mastery',
+      instructor: 'Michael Chen',
+      duration: '10 hours',
       rating: 4.9,
-      reviewCount: 89,
-      tutor: 'Alex Chen',
-      imageUrl: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg',
+      image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg',
+      price: 59.99,
+    },
+  ];
+
+  const recentActivity = [
+    {
+      id: '1',
+      type: 'course_progress',
+      title: 'Completed Chapter 3: React Hooks',
+      course: 'Advanced Web Development',
+      timestamp: '2 hours ago',
+      icon: Clock,
+    },
+    {
+      id: '2',
+      type: 'achievement',
+      title: 'Earned "Fast Learner" Badge',
+      description: 'Completed 5 courses in a month',
+      timestamp: '1 day ago',
+      icon: TrendingUp,
     },
     {
       id: '3',
-      title: 'Yoga for Beginners',
-      category: 'Fitness',
-      rating: 4.7,
-      reviewCount: 156,
-      tutor: 'Emma Wilson',
-      imageUrl: 'https://images.pexels.com/photos/374101/pexels-photo-374101.jpeg',
-      tutorImageUrl: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg',
+      type: 'reading',
+      title: 'Started reading "Clean Code"',
+      author: 'Robert C. Martin',
+      timestamp: '2 days ago',
+      icon: BookOpen,
     },
   ];
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
         <View style={styles.header}>
-          <View style={styles.logoContainer}>
-            <Image 
-              source={{ uri: 'https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg' }}
-              style={styles.logo} 
-            />
-            <View>
-              <Text style={styles.greeting}>Hello, Alex</Text>
-              <Text style={styles.subGreeting}>What would you like to learn today?</Text>
-            </View>
+          <View style={styles.headerTop}>
+            <Text style={styles.greeting}>Welcome back, Alex!</Text>
+            <TouchableOpacity style={styles.notificationButton}>
+              <Bell size={24} color="#1A1A1A" />
+              <View style={styles.notificationBadge}>
+                <Text style={styles.notificationCount}>3</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <SearchBar
+            placeholder="Search courses, books, and more..."
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+        </View>
+
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Featured Courses</Text>
+            <Link href="/courses" style={styles.seeAllLink}>
+              <Text style={styles.seeAllText}>See All</Text>
+            </Link>
+          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.coursesContainer}
+          >
+            {featuredCourses.map(course => (
+              <FeaturedCourse key={course.id} course={course} />
+            ))}
+          </ScrollView>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Recent Activity</Text>
+          <View style={styles.activityContainer}>
+            {recentActivity.map(activity => (
+              <ActivityCard key={activity.id} activity={activity} />
+            ))}
           </View>
         </View>
-
-        <View style={styles.searchContainer}>
-          <View style={styles.searchInputContainer}>
-            <Search size={20} color="#8E8E93" style={styles.searchIcon} />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search for skills"
-              value={searchQuery}
-              onChangeText={setSearchQuery}
-            />
-          </View>
-          <TouchableOpacity style={styles.filterButton}>
-            <Filter size={20} color="#0066CC" />
-          </TouchableOpacity>
-        </View>
-
-        <CategoryList />
-
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Featured Skills</Text>
-          <TouchableOpacity style={styles.seeAllButton}>
-            <Text style={styles.seeAllText}>See All</Text>
-            <ChevronRight size={16} color="#0066CC" />
-          </TouchableOpacity>
-        </View>
-
-        <ScrollView 
-          horizontal 
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.skillsScrollContent}
-        >
-          {featuredSkills.map(skill => (
-            <SkillCard key={skill.id} skill={skill} />
-          ))}
-        </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
@@ -100,94 +112,79 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4ECDC4',
-  },
-  scrollContent: {
-    paddingBottom: 24,
+    backgroundColor: '#F8F9FA',
   },
   header: {
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 8,
+    padding: 16,
+    backgroundColor: '#FFFFFF',
   },
-  logoContainer: {
+  headerTop: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 16,
   },
-  logo: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    marginRight: 12,
-  },
   greeting: {
     fontSize: 24,
-    fontWeight: '600',
-    color: '#FFFFFF',
-    marginBottom: 4,
+    fontWeight: '700',
+    color: '#1A1A1A',
   },
-  subGreeting: {
-    fontSize: 16,
-    color: '#FFFFFF',
-    opacity: 0.8,
-  },
-  searchContainer: {
-    flexDirection: 'row',
-    paddingHorizontal: 16,
-    marginBottom: 24,
-  },
-  searchInputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    marginRight: 12,
-  },
-  searchIcon: {
-    marginRight: 8,
-  },
-  searchInput: {
-    flex: 1,
-    height: 40,
-    fontSize: 16,
-    color: '#000000',
-  },
-  filterButton: {
+  notificationButton: {
+    position: 'relative',
     width: 40,
     height: 40,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
+    borderRadius: 20,
+    backgroundColor: '#F1F3F5',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  notificationBadge: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    backgroundColor: '#FF6B6B',
+    borderRadius: 8,
+    minWidth: 16,
+    height: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notificationCount: {
+    color: '#FFFFFF',
+    fontSize: 10,
+    fontWeight: '600',
+  },
+  section: {
+    marginTop: 24,
+    paddingHorizontal: 16,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 16,
     marginBottom: 16,
-    marginTop: 8,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#FFFFFF',
+    color: '#1A1A1A',
   },
-  seeAllButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  seeAllLink: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
   },
   seeAllText: {
+    color: '#6C63FF',
     fontSize: 14,
-    color: '#FFFFFF',
-    marginRight: 4,
+    fontWeight: '500',
   },
-  skillsScrollContent: {
-    paddingLeft: 16,
-    paddingRight: 8,
-    paddingBottom: 8,
+  coursesContainer: {
+    paddingRight: 16,
+  },
+  activityContainer: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 24,
   },
 });

@@ -1,86 +1,62 @@
 import { Tabs } from 'expo-router';
-import { StyleSheet } from 'react-native';
-import { Chrome as Home, Users, MessageCircle, Calendar, User } from 'lucide-react-native';
-
-const TAB_COLORS = {
-  home: '#4ECDC4',      // Teal
-  explore: '#FF6B6B',   // Coral
-  messages: '#FFD93D',  // Yellow
-  calendar: '#95D5B2',  // Sage
-  profile: '#6C63FF'    // Purple
-};
+import { Home, Library, Video, Users, User } from 'lucide-react-native';
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#0066CC',
-        tabBarInactiveTintColor: '#8E8E93',
-        tabBarStyle: styles.tabBar,
-        tabBarLabelStyle: styles.tabBarLabel,
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: '#FFFFFF',
+          borderTopWidth: 1,
+          borderTopColor: '#E5E5E5',
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+        tabBarActiveTintColor: '#6C63FF',
+        tabBarInactiveTintColor: '#8E8E93',
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '500',
+        },
       }}
     >
       <Tabs.Screen
         name="home"
         options={{
-          title: 'Discover',
-          tabBarIcon: ({ color, size }) => (
-            <Home color={color} size={size} />
-          ),
+          title: 'Home',
+          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="videos"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, size }) => (
-            <Users color={color} size={size} />
-          ),
+          title: 'Videos',
+          tabBarIcon: ({ color, size }) => <Video color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="messages"
+        name="library"
         options={{
-          title: 'Messages',
-          tabBarIcon: ({ color, size }) => (
-            <MessageCircle color={color} size={size} />
-          ),
+          title: 'Library',
+          tabBarIcon: ({ color, size }) => <Library color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="calendar"
+        name="community"
         options={{
-          title: 'Calendar',
-          tabBarIcon: ({ color, size }) => (
-            <Calendar color={color} size={size} />
-          ),
+          title: 'Community',
+          tabBarIcon: ({ color, size }) => <Users color={color} size={size} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }) => (
-            <User color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
         }}
       />
     </Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: '#FFFFFF',
-    borderTopWidth: 1,
-    borderTopColor: '#EFEFEF',
-    height: 60,
-    paddingBottom: 8,
-    paddingTop: 8,
-  },
-  tabBarLabel: {
-    fontSize: 12,
-    fontWeight: '500',
-  },
-});
