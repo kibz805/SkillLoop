@@ -1,6 +1,6 @@
 import { StyleSheet, View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Settings, Edit2, BookOpen, Video, Users, Star } from 'lucide-react-native';
+import { Settings, CreditCard as Edit2, BookOpen, Video, Users, Star } from 'lucide-react-native';
 import StatCard from '@/components/StatCard';
 
 export default function ProfileScreen() {
